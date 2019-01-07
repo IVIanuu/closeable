@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Closeable.iml" filepath="$PROJECT_DIR$/Closeable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/closeable/closeable.iml" filepath="$PROJECT_DIR$/closeable/closeable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/closeable-coroutines/closeable-coroutines.iml" filepath="$PROJECT_DIR$/closeable-coroutines/closeable-coroutines.iml" />
+      <module fileurl="file://$PROJECT_DIR$/closeable-rx/closeable-rx.iml" filepath="$PROJECT_DIR$/closeable-rx/closeable-rx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/sample.iml" />
+    </modules>
+  </component>
+</project>

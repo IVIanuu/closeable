@@ -20,8 +20,15 @@ package com.ivianuu.closeable
  * A closeable/cancelable component
  */
 interface Closeable {
+
+    /**
+     * Whether or not this closable is closed
+     */
+    val isClosed: Boolean
+
     /**
      * Closes this instance
      */
     fun close()
+
 }

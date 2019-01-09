@@ -17,6 +17,7 @@
 package com.ivianuu.closeable.rx
 
 import com.ivianuu.closeable.Closeable
+import com.ivianuu.closeable.CompositeClosable
 import io.reactivex.disposables.Disposable
 
 /**
@@ -29,8 +30,25 @@ fun Disposable.asCloseable(): Closeable = DisposableCloseable(this)
  */
 class DisposableCloseable(private val disposable: Disposable) : Closeable {
 
+    override val isClosed: Boolean
+        get() = disposable.isDisposed
+    
     override fun close() {
         disposable.dispose()
     }
 
+}
+
+/**
+ * Adds all [disposables]
+ */
+fun CompositeClosable.add(vararg disposables: Disposable) {
+    add(disposables.map { it.asCloseable() })
+}
+
+/**
+ * Adds all [disposables]
+ */
+fun CompositeClosable.add(disposables: Iterable<Disposable>) {
+    add(disposables.map { it.asCloseable() })
 }

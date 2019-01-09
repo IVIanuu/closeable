@@ -19,9 +19,15 @@ package com.ivianuu.closeable
 /**
  * A [Closeable] which invokes the [close] action on close
  */
-class LambdaCloseable(val close: () -> Unit) : Closeable {
+class LambdaCloseable(private val close: () -> Unit) : Closeable {
+
+    @Volatile override var isClosed = false
+
     override fun close() {
-        close.invoke()
+        if (!isClosed) {
+            isClosed = true
+            close.invoke()
+        }
     }
 }
 

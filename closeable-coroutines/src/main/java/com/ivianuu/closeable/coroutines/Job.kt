@@ -17,6 +17,7 @@
 package com.ivianuu.closeable.coroutines
 
 import com.ivianuu.closeable.Closeable
+import com.ivianuu.closeable.CompositeClosable
 import kotlinx.coroutines.Job
 
 /**
@@ -25,9 +26,26 @@ import kotlinx.coroutines.Job
 fun Job.asCloseable(): Closeable = JobCloseable(this)
 
 /**
+ * Adds all [jobs]
+ */
+fun CompositeClosable.add(vararg jobs: Job) {
+    add(jobs.map { it.asCloseable() })
+}
+
+/**
+ * Adds all [jobs]
+ */
+fun CompositeClosable.add(jobs: Iterable<Job>) {
+    add(jobs.map { it.asCloseable() })
+}
+
+/**
  * A [Closeable] which cancels the [job] on close
  */
 class JobCloseable(private val job: Job) : Closeable {
+
+    override val isClosed: Boolean
+        get() = job.isCancelled
 
     override fun close() {
         job.cancel()

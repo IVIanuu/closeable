@@ -28,10 +28,12 @@ class LambdaCloseableTest {
 
         val closeable = Closeable { called = true }
 
+        assertFalse(closeable.isClosed)
         assertFalse(called)
 
         closeable.close()
 
+        assertTrue(closeable.isClosed)
         assertTrue(called)
     }
 

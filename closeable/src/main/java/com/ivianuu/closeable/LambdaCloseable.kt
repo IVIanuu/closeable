@@ -22,6 +22,7 @@ package com.ivianuu.closeable
 class LambdaCloseable(private val close: () -> Unit) : Closeable {
 
     @Volatile override var isClosed = false
+        private set
 
     override fun close() {
         if (!isClosed) {

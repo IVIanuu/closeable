@@ -22,6 +22,7 @@ package com.ivianuu.closeable
 class CompositeClosable : Closeable {
 
     @Volatile override var isClosed = false
+        private set
 
     /**
      * The size of all [Closeable]s

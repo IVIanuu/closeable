@@ -26,20 +26,6 @@ import io.reactivex.disposables.Disposable
 fun Disposable.asCloseable(): Closeable = DisposableCloseable(this)
 
 /**
- * A [Closeable] which disposes the [disposable] on close
- */
-class DisposableCloseable(private val disposable: Disposable) : Closeable {
-
-    override val isClosed: Boolean
-        get() = disposable.isDisposed
-    
-    override fun close() {
-        disposable.dispose()
-    }
-
-}
-
-/**
  * Adds all [disposables]
  */
 fun CompositeClosable.add(vararg disposables: Disposable) {
@@ -51,4 +37,25 @@ fun CompositeClosable.add(vararg disposables: Disposable) {
  */
 fun CompositeClosable.add(disposables: Iterable<Disposable>) {
     add(disposables.map { it.asCloseable() })
+}
+
+/**
+ * Adds this disposable to [closeables]
+ */
+fun Disposable.addTo(closeables: CompositeClosable): Disposable = apply {
+    closeables.add(this)
+}
+
+/**
+ * A [Closeable] which disposes the [disposable] on close
+ */
+class DisposableCloseable(private val disposable: Disposable) : Closeable {
+
+    override val isClosed: Boolean
+        get() = disposable.isDisposed
+    
+    override fun close() {
+        disposable.dispose()
+    }
+
 }

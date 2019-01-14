@@ -40,6 +40,13 @@ fun CompositeClosable.add(jobs: Iterable<Job>) {
 }
 
 /**
+ * Adds this disposable to [closeables]
+ */
+fun Job.addTo(closeables: CompositeClosable): Job = apply {
+    closeables.add(this)
+}
+
+/**
  * A [Closeable] which cancels the [job] on close
  */
 class JobCloseable(private val job: Job) : Closeable {

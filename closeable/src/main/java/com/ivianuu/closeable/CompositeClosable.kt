@@ -82,3 +82,10 @@ class CompositeClosable : Closeable {
     }
 
 }
+
+/**
+ * Adds this closable to [closeables]
+ */
+fun Closeable.addTo(closeables: CompositeClosable): Closeable = apply {
+    closeables.add(this)
+}

@@ -8,16 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ivianuu.closeable.coroutines.addTo
 import com.ivianuu.closeable.rx.addTo
 import io.reactivex.Observable
-import kotlinx.coroutines.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity() {
 
     private val closeables = CompositeClosable()
 
     private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

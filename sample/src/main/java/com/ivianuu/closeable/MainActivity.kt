@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             delay(10000)
-            // heavy work..
+            // heavy work...
         }.addTo(closeables)
 
         Observable.interval(1, TimeUnit.SECONDS)

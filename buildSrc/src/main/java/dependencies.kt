@@ -7,14 +7,18 @@ object Build {
     const val targetSdk = 28
     const val versionCode = 1
     const val versionName = "0.0.1"
+}
 
-    const val groupId = "com.github.IVIanuu"
+object Publishing {
+    const val groupId = "com.ivianuu.closeable"
 }
 
 object Versions {
     const val androidGradlePlugin = "3.3.0"
 
     const val androidxAppCompat = "1.0.2"
+
+    const val bintray = "1.8.4"
 
     const val coroutines = "1.0.0"
 
@@ -31,6 +35,9 @@ object Deps {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
 
     const val androidxAppCompat = "androidx.appcompat:appcompat:${Versions.androidxAppCompat}"
+
+    const val bintrayGradlePlugin =
+        "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintray}"
 
     const val coroutinesCore =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"

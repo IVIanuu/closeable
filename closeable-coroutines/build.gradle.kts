@@ -1,5 +1,3 @@
-import java.io.File
-
 /*
  * Copyright 2018 Manuel Wrage
  *
@@ -23,6 +21,7 @@ plugins {
 
 apply(from = "https://raw.githubusercontent.com/IVIanuu/gradle-scripts/master/java-compatibility-android.gradle")
 apply(from = "https://raw.githubusercontent.com/IVIanuu/gradle-scripts/master/jitpack-publish.gradle")
+apply(from = "$rootDir/gradle/local-publish.gradle")
 
 dependencies {
     api(Deps.coroutinesCore)

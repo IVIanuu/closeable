@@ -1,0 +1,20 @@
+def jitpackGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim().substring(0, 10)
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.groupId = Build.groupId
+        version=jitpackGitHash() // default to the same commit hash that jitpack uses
+        pom.artifactId = project.name
+    }
+    // just for convenience
+    doLast() {
+        println "Published: ${Build.groupId}:${project.name}:${jitpackGitHash()}"
+    }
+}

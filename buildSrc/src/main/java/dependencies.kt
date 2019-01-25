@@ -12,7 +12,7 @@ object Build {
 object Versions {
     const val androidGradlePlugin = "3.3.0"
 
-    const val androidxAppCompat = "1.0.0"
+    const val androidxAppCompat = "1.0.2"
 
     const val coroutines = "1.0.0"
 

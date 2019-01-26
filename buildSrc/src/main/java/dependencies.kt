@@ -11,6 +11,8 @@ object Build {
 
 object Publishing {
     const val groupId = "com.ivianuu.closeable"
+    const val vcsUrl = "https://github.com/IVIanuu/closeable"
+    const val version = "git"
 }
 
 object Versions {

@@ -18,12 +18,20 @@ package com.ivianuu.closeable.coroutines
 
 import com.ivianuu.closeable.Closeable
 import com.ivianuu.closeable.CompositeClosable
+import com.ivianuu.closeable.add
 import kotlinx.coroutines.Job
 
 /**
  * Returns a [Closeable] which cancels this job on close
  */
 fun Job.asCloseable(): Closeable = JobCloseable(this)
+
+/**
+ * Adds the [job]
+ */
+fun CompositeClosable.add(job: Job) {
+    add(job.asCloseable())
+}
 
 /**
  * Adds all [jobs]

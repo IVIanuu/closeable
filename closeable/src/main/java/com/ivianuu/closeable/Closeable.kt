@@ -32,3 +32,10 @@ interface Closeable {
     fun close()
 
 }
+
+/**
+ * Runs the [block] and closes the closeable after that
+ */
+fun <T : Closeable, R> T.use(block: (T) -> R): R {
+    return block.invoke(this).also { close() }
+}

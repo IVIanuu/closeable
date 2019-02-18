@@ -12,7 +12,7 @@ object Build {
 object Publishing {
     const val groupId = "com.ivianuu.closeable"
     const val vcsUrl = "https://github.com/IVIanuu/closeable"
-    const val version = "${Build.versionName}-dev-1"
+    const val version = "${Build.versionName}-dev-2"
 }
 
 object Versions {

@@ -18,12 +18,20 @@ package com.ivianuu.closeable.rx
 
 import com.ivianuu.closeable.Closeable
 import com.ivianuu.closeable.CompositeClosable
+import com.ivianuu.closeable.add
 import io.reactivex.disposables.Disposable
 
 /**
  * Returns a [Closeable] which disposes this disposable on close
  */
 fun Disposable.asCloseable(): Closeable = DisposableCloseable(this)
+
+/**
+ * Adds the [disposable]
+ */
+fun CompositeClosable.add(disposable: Disposable) {
+    add(disposable.asCloseable())
+}
 
 /**
  * Adds all [disposables]

@@ -36,8 +36,10 @@ class MainActivity : AppCompatActivity() {
 
     private val closeables = CompositeClosable()
 
-    private val prefsListener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
-    }
+    private val prefsListener =
+        SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
+
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

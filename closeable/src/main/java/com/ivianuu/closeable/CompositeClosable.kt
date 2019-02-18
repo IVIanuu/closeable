@@ -32,23 +32,16 @@ class CompositeClosable : Closeable {
     internal val closeables = mutableListOf<Closeable>()
 
     /**
-     * Adds all [closeables]
+     * Adds the [closeable]
      */
-    fun add(closeables: Iterable<Closeable>) {
+    fun add(closeable: Closeable) {
         if (!isClosed) {
             synchronized(this) {
-                this.closeables.addAll(closeables)
+                closeables.add(closeable)
             }
         } else {
-            closeables.forEach { it.close() }
+            closeable.close()
         }
-    }
-
-    /**
-     * Adds all [closeables]
-     */
-    fun add(vararg closeables: Closeable) {
-        add(closeables.asIterable())
     }
 
     /**
@@ -81,6 +74,20 @@ class CompositeClosable : Closeable {
         }
     }
 
+}
+
+/**
+ * Adds all [closeables]
+ */
+fun CompositeClosable.add(closeables: Iterable<Closeable>) {
+    closeables.forEach { add(it) }
+}
+
+/**
+ * Adds all [closeables]
+ */
+fun Closeable.add(vararg closeables: Closeable) {
+    closeables.forEach { add(it) }
 }
 
 /**

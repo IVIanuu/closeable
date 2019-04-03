@@ -17,7 +17,7 @@
 package com.ivianuu.closeable
 
 /**
- * Wraps a couple [Closeable]
+ * Wraps a couple [Closeable]s
  */
 class CompositeClosable : Closeable {
 

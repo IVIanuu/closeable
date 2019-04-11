@@ -17,9 +17,14 @@
 package com.ivianuu.closeable
 
 /**
+ * Returns a [Closeable] which invokes [close] on close
+ */
+fun Closeable(close: () -> Unit): Closeable = LambdaCloseable(close)
+
+/**
  * A [Closeable] which invokes the [close] action on close
  */
-class LambdaCloseable(private val close: () -> Unit) : Closeable {
+internal class LambdaCloseable(private val close: () -> Unit) : Closeable {
 
     @Volatile override var isClosed = false
         private set
@@ -31,8 +36,3 @@ class LambdaCloseable(private val close: () -> Unit) : Closeable {
         }
     }
 }
-
-/**
- * Returns a [Closeable] which invokes [close] on close
- */
-fun Closeable(close: () -> Unit): Closeable = LambdaCloseable(close)

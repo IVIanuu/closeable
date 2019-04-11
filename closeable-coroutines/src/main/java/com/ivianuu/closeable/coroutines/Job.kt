@@ -57,7 +57,7 @@ fun Job.addTo(closeables: CompositeClosable): Job = apply {
 /**
  * A [Closeable] which cancels the [job] on close
  */
-class JobCloseable(private val job: Job) : Closeable {
+internal class JobCloseable(private val job: Job) : Closeable {
 
     override val isClosed: Boolean
         get() = job.isCancelled

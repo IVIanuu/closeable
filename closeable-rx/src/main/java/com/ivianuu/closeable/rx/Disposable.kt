@@ -57,7 +57,7 @@ fun Disposable.addTo(closeables: CompositeClosable): Disposable = apply {
 /**
  * A [Closeable] which disposes the [disposable] on close
  */
-class DisposableCloseable(private val disposable: Disposable) : Closeable {
+internal class DisposableCloseable(private val disposable: Disposable) : Closeable {
 
     override val isClosed: Boolean
         get() = disposable.isDisposed
